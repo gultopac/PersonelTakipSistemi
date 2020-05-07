@@ -18,9 +18,51 @@ namespace PersonelTakipSistemi
         {
             InitializeComponent();
         }
-        OleDbConnection baglantim = new OleDbConnection("Provider=Microsoft.Ace.OleDb.12.0 Data Source=personel.mdb");
+        OleDbConnection baglantim = new OleDbConnection("Provider=Microsoft.Ace.OleDb.12.0;Data Source=personel.mdb");
         
-        private 
-       
+        private void kullanicilar_goster()
+        {
+            try
+            {
+                baglantim.Open();
+                OleDbDataAdapter kullanicilari_listele = new OleDbDataAdapter("select TcKimlikno AS[TC Kimlik No], Adi as[Adı],Soyadi as[Soyadı]," +
+                    "Yetki as[Yetki],KullaniciAdi as[Kullanıcı Adı],Parola as[Parola] from kullanicilar order by Adi ASC",baglantim);
+                DataSet dshafiza = new DataSet();
+                kullanicilari_listele.Fill(dshafiza);
+                dataGridView1.DataSource = dshafiza.Tables[0];
+                baglantim.Close();
+
+            }
+            catch (Exception hatamsj)
+            {
+                MessageBox.Show(hatamsj.Message, "Personel Takip Programı", MessageBoxButtons.OK, MessageBoxIcon.Error); baglantim.Close();
+                
+            }
+        }
+        private void personelleri_goster()
+        {
+            try
+            {
+                baglantim.Open();
+                OleDbDataAdapter personelleri_listele = new OleDbDataAdapter("select TcKimlikno AS[TC Kimlik No], Ad as[Adı],Soyad as[Soyadı], Cinsiyet as[Cinsiyeti] " +
+                    "Mezuniyet as[Mezuniyet],DogumTarihi as[Doğum Tarihi],Gorevi as[Görevi],GorevYeri as[Görev Yeri],Maasi as[Maaş] from personeller order by Ad ASC", baglantim);
+                DataSet dshafiza = new DataSet();
+                personelleri_listele.Fill(dshafiza);
+                dataGridView1.DataSource = dshafiza.Tables[0];
+                baglantim.Close();
+
+            }
+            catch (Exception hatamsj)
+            {
+                MessageBox.Show(hatamsj.Message, "Personel Takip Programı", MessageBoxButtons.OK, MessageBoxIcon.Error); baglantim.Close();
+
+            }
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+            kullanicilar_goster();
+            personelleri_goster();
+        }
     }
 }
