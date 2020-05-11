@@ -10,3 +10,14 @@ C:\Users\user\source\repos\PersonelTakipSistemi\PersonelTakipSistemi\obj\Debug\P
 C:\Users\user\source\repos\PersonelTakipSistemi\PersonelTakipSistemi\obj\Debug\PersonelTakipSistemi.pdb
 C:\Users\user\source\repos\PersonelTakipSistemi\PersonelTakipSistemi\bin\Debug\personel.mdb
 C:\Users\user\source\repos\PersonelTakipSistemi\PersonelTakipSistemi\obj\Debug\PersonelTakipSistemi.Form2.resources
+C:\Users\gül\Desktop\PersonelTakipSistemi\PersonelTakipSistemi\bin\Debug\PersonelTakipSistemi.exe.config
+C:\Users\gül\Desktop\PersonelTakipSistemi\PersonelTakipSistemi\bin\Debug\PersonelTakipSistemi.exe
+C:\Users\gül\Desktop\PersonelTakipSistemi\PersonelTakipSistemi\bin\Debug\PersonelTakipSistemi.pdb
+C:\Users\gül\Desktop\PersonelTakipSistemi\PersonelTakipSistemi\obj\Debug\PersonelTakipSistemi.csprojAssemblyReference.cache
+C:\Users\gül\Desktop\PersonelTakipSistemi\PersonelTakipSistemi\obj\Debug\PersonelTakipSistemi.Form1.resources
+C:\Users\gül\Desktop\PersonelTakipSistemi\PersonelTakipSistemi\obj\Debug\PersonelTakipSistemi.Form2.resources
+C:\Users\gül\Desktop\PersonelTakipSistemi\PersonelTakipSistemi\obj\Debug\PersonelTakipSistemi.Properties.Resources.resources
+C:\Users\gül\Desktop\PersonelTakipSistemi\PersonelTakipSistemi\obj\Debug\PersonelTakipSistemi.csproj.GenerateResource.cache
+C:\Users\gül\Desktop\PersonelTakipSistemi\PersonelTakipSistemi\obj\Debug\PersonelTakipSistemi.csproj.CoreCompileInputs.cache
+C:\Users\gül\Desktop\PersonelTakipSistemi\PersonelTakipSistemi\obj\Debug\PersonelTakipSistemi.exe
+C:\Users\gül\Desktop\PersonelTakipSistemi\PersonelTakipSistemi\obj\Debug\PersonelTakipSistemi.pdb

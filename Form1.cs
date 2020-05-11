@@ -17,7 +17,7 @@ namespace PersonelTakipSistemi
         {
             InitializeComponent();
         }
-        OleDbConnection baglantim = new OleDbConnection("Provider=Microsoft.Ace.OleDb.12.0; Data Source=personel.mdb");
+        OleDbConnection baglantim = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0; Data Source=personel3.mdb");
         //global değişkenler
         public static string TcKimlikNo, Adi, Soyadi, Yetki;
 
@@ -45,7 +45,7 @@ namespace PersonelTakipSistemi
     
                baglantim.Open();
                 //access tablosundan verileri çektik
-                OleDbCommand selectsorgu = new OleDbCommand("select * from kullanicilar",baglantim);
+                OleDbCommand selectsorgu = new OleDbCommand("select * from kullanicilarim",baglantim);
                 //
                 OleDbDataReader kayitokuma = selectsorgu.ExecuteReader();//sorgunun yürütülmesini sağladık,datareadera okunan verileri aktardık
                 while (kayitokuma.Read())
