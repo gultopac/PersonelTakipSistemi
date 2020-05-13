@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
@@ -56,16 +57,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -86,20 +84,22 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.kullanicilarBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.ımageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBox4 = new System.Windows.Forms.MaskedTextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kullanicilarBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -146,6 +146,14 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Kullanıcı İşlemleri";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 363);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(577, 111);
+            this.dataGridView1.TabIndex = 4;
             // 
             // label10
             // 
@@ -362,6 +370,10 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.maskedTextBox4);
+            this.tabPage2.Controls.Add(this.maskedTextBox3);
+            this.tabPage2.Controls.Add(this.maskedTextBox2);
+            this.tabPage2.Controls.Add(this.maskedTextBox1);
             this.tabPage2.Controls.Add(this.dataGridView2);
             this.tabPage2.Controls.Add(this.dateTimePicker1);
             this.tabPage2.Controls.Add(this.comboBox3);
@@ -369,10 +381,6 @@
             this.tabPage2.Controls.Add(this.comboBox1);
             this.tabPage2.Controls.Add(this.radioButton4);
             this.tabPage2.Controls.Add(this.radioButton3);
-            this.tabPage2.Controls.Add(this.textBox10);
-            this.tabPage2.Controls.Add(this.textBox9);
-            this.tabPage2.Controls.Add(this.textBox8);
-            this.tabPage2.Controls.Add(this.textBox7);
             this.tabPage2.Controls.Add(this.label21);
             this.tabPage2.Controls.Add(this.label20);
             this.tabPage2.Controls.Add(this.label19);
@@ -396,6 +404,14 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Personel İşlemleri";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(21, 372);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(522, 124);
+            this.dataGridView2.TabIndex = 26;
             // 
             // dateTimePicker1
             // 
@@ -450,34 +466,6 @@
             this.radioButton3.TabStop = true;
             this.radioButton3.Text = "Bay";
             this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // textBox10
-            // 
-            this.textBox10.Location = new System.Drawing.Point(443, 211);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(100, 20);
-            this.textBox10.TabIndex = 19;
-            // 
-            // textBox9
-            // 
-            this.textBox9.Location = new System.Drawing.Point(106, 215);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(180, 20);
-            this.textBox9.TabIndex = 18;
-            // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(106, 182);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(180, 20);
-            this.textBox8.TabIndex = 17;
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(106, 149);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(127, 20);
-            this.textBox7.TabIndex = 16;
             // 
             // label21
             // 
@@ -667,14 +655,6 @@
             // 
             this.kullanicilarBindingSource.DataMember = "kullanicilar";
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 363);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(577, 111);
-            this.dataGridView1.TabIndex = 4;
-            // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
@@ -685,13 +665,33 @@
             this.ımageList1.ImageSize = new System.Drawing.Size(16, 16);
             this.ımageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
-            // dataGridView2
+            // maskedTextBox1
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(21, 372);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(522, 124);
-            this.dataGridView2.TabIndex = 26;
+            this.maskedTextBox1.Location = new System.Drawing.Point(106, 147);
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(100, 20);
+            this.maskedTextBox1.TabIndex = 27;
+            // 
+            // maskedTextBox2
+            // 
+            this.maskedTextBox2.Location = new System.Drawing.Point(106, 181);
+            this.maskedTextBox2.Name = "maskedTextBox2";
+            this.maskedTextBox2.Size = new System.Drawing.Size(180, 20);
+            this.maskedTextBox2.TabIndex = 28;
+            // 
+            // maskedTextBox3
+            // 
+            this.maskedTextBox3.Location = new System.Drawing.Point(106, 211);
+            this.maskedTextBox3.Name = "maskedTextBox3";
+            this.maskedTextBox3.Size = new System.Drawing.Size(180, 20);
+            this.maskedTextBox3.TabIndex = 29;
+            // 
+            // maskedTextBox4
+            // 
+            this.maskedTextBox4.Location = new System.Drawing.Point(443, 211);
+            this.maskedTextBox4.Name = "maskedTextBox4";
+            this.maskedTextBox4.Size = new System.Drawing.Size(100, 20);
+            this.maskedTextBox4.TabIndex = 30;
             // 
             // Form2
             // 
@@ -708,14 +708,14 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kullanicilarBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -761,10 +761,6 @@
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label19;
@@ -787,5 +783,9 @@
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox4;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox3;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox2;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
     }
 }
