@@ -129,5 +129,159 @@ namespace PersonelTakipSistemi
 
             radioButton3.Checked = true;
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox1.Text.Length < 11)
+            {
+                errorProvider1.SetError(textBox1, "TC kimlik no 11 karekter olmalı!");
+            }
+            else
+                errorProvider1.Clear();
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)//her tuşa bastığımzda tetiklenir harf yazmayı engeller
+        {
+            if (((int)e.KeyChar >= 48 && (int)e.KeyChar <= 57) || (int)e.KeyChar == 8) //0 la 9 arası 48-57 ascii kodlarını ifade eder 8 de back space tuşunu ifade eder
+            {
+                e.Handled = false;
+            }
+            else
+                e.Handled = true;
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsLetter(e.KeyChar) == true || char.IsControl(e.KeyChar) == true || char.IsSeparator(e.KeyChar) == true){
+                //e.keychar tuş bilgisi alma
+                //ısletter=harf demek oluyor 
+                //ıscontrol=back space e basılmışsa
+                //ısseparator boşluk koyabiliir 2 isimli olup
+                e.Handled = false;//tuşlar aktif olsun
+            }
+            else
+            e.Handled = true;
+        }
+
+        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsLetter(e.KeyChar) == true || char.IsControl(e.KeyChar) == true || char.IsSeparator(e.KeyChar) == true)
+            {
+            e.Handled = false;
+
+            }
+            else
+                e.Handled = true;
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox4.Text.Length != 8)
+            {
+                errorProvider1.SetError(textBox4, " Kullanıcı adı 8 Karakter olmalı");
+            }
+            else
+                errorProvider1.Clear();
+        }
+
+        private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsLetter(e.KeyChar) == true || char.IsControl(e.KeyChar) == true || char.IsDigit(e.KeyChar) == true)
+            //digit sayı girme kontrolü
+            {
+                e.Handled = false;
+
+            }
+            else
+                e.Handled = true;
+        }
+
+        int parola_skor = 0;
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+            string parola_seviyesi = "";//zayıf güçlü çok güçlü durumu
+            int kucuk_harf_skoru = 0;
+            int buyuk_harf_skoru = 0;
+            int rakam_skoru = 0;
+            int sembol_skoru = 0;
+            string sifre = textBox5.Text;
+            //regex güvenli parola işlemleride kullanılan kütüphanedir.
+            //regex ing karakterleri baz alır ,şifre string ifadesindeki türkçe karakterleri ing karaktere dönüştürmeliyiz
+            string duzeltismis_sifre = "";
+            duzeltismis_sifre = sifre;
+            duzeltismis_sifre = duzeltismis_sifre.Replace('İ', 'I');//yer değiştirme
+            duzeltismis_sifre = duzeltismis_sifre.Replace('ı', 'i');
+            duzeltismis_sifre = duzeltismis_sifre.Replace('Ç', 'C');
+            duzeltismis_sifre = duzeltismis_sifre.Replace('ç', 'c');
+            duzeltismis_sifre = duzeltismis_sifre.Replace('Ş', 'S');
+            duzeltismis_sifre = duzeltismis_sifre.Replace('ş', 's');
+            duzeltismis_sifre = duzeltismis_sifre.Replace('Ğ', 'G');
+            duzeltismis_sifre = duzeltismis_sifre.Replace('ğ', 'g');
+            duzeltismis_sifre = duzeltismis_sifre.Replace('Ü', 'U');
+            duzeltismis_sifre = duzeltismis_sifre.Replace('ü', 'u');
+            duzeltismis_sifre = duzeltismis_sifre.Replace('Ö', 'O');
+            duzeltismis_sifre = duzeltismis_sifre.Replace('ö', 'o');
+            if (sifre != duzeltismis_sifre)
+            {
+                sifre = duzeltismis_sifre;
+                textBox5.Text = sifre;
+                MessageBox.Show("Paroladaki türkçe karakterler ingilizce karakterlere dönüştürülmüştür.");
+            }
+            //bir küçük harf 10 puan 2 ve üzeri 20 puan
+            //şirefnin uzunluğu - küçük harf olmayan hali replace yer değiştir//küçük harf olanları siliyoruz bir nevi 
+            int az_karakter_sayisi = sifre.Length - Regex.Replace(sifre, "[a-z]", "").Length;//regexreplace şifredeki küçük karakterleri çıkarıp uzunluğunu verir
+            kucuk_harf_skoru = Math.Min(2, az_karakter_sayisi)*10;//2 mi daha yoksa küçük harf sayısı mı küçük olanı 10 la çarptık
+
+            int AZ_karakter_sayisi = sifre.Length - Regex.Replace(sifre, "[A-Z]", "").Length;
+            buyuk_harf_skoru = Math.Min(2, AZ_karakter_sayisi)*10;
+
+            int rakam_sayisi = sifre.Length - Regex.Replace(sifre, "[0-9]", "").Length;
+            rakam_skoru = Math.Min(2,rakam_sayisi)*10;
+
+            int sembol_sayisi = sifre.Length - az_karakter_sayisi - AZ_karakter_sayisi - rakam_sayisi;
+            sembol_skoru = Math.Min(2, sembol_sayisi)*10;
+
+            parola_skor = sembol_skoru + kucuk_harf_skoru + buyuk_harf_skoru + rakam_skoru;
+            //100lük sistemde tamamlamak için 
+            if (sifre.Length == 9)
+            {
+                parola_skor += 10;
+
+            }
+            else if (sifre.Length == 10)
+            {
+                parola_skor += 20;
+            }
+
+            if (kucuk_harf_skoru==0 || buyuk_harf_skoru==0 || rakam_skoru==0 || sembol_skoru==0) {
+                label22.Text = "Büyük harf,Küçük harf,Rakam ve Sembol Kullanmalısın !";
+            }
+            if (kucuk_harf_skoru!= 0 && buyuk_harf_skoru != 0 && rakam_skoru != 0 && sembol_skoru != 0)
+            {
+                label22.Text = "";
+            }
+            if (parola_skor < 70)
+            {
+                parola_seviyesi = "Kabul edilemedi";
+
+            }
+            else if (parola_skor == 70 || parola_skor == 80)
+                parola_seviyesi = "Güçlü";
+            else if (parola_skor == 90 || parola_skor == 100)
+                parola_seviyesi = "Çok güçlü";
+
+            label9.Text = "%" + Convert.ToString(parola_skor);
+            label10.Text = parola_seviyesi;
+            progressBar1.Value = parola_skor;//progress barı değere göre doldurduk.
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox6.Text != textBox5.Text)
+                errorProvider1.SetError(textBox6, "Parolalar eşleşmiyor");
+            else
+                errorProvider1.Clear();
+        }
     }
-}
+    }
+

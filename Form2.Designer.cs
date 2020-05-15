@@ -57,6 +57,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.maskedTextBox4 = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
@@ -87,10 +91,7 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.ımageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox4 = new System.Windows.Forms.MaskedTextBox();
+            this.label22 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -114,6 +115,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label22);
             this.tabPage1.Controls.Add(this.dataGridView1);
             this.tabPage1.Controls.Add(this.label10);
             this.tabPage1.Controls.Add(this.label9);
@@ -253,6 +255,7 @@
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(126, 20);
             this.textBox6.TabIndex = 13;
+            this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
             // textBox5
             // 
@@ -260,6 +263,7 @@
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(126, 20);
             this.textBox5.TabIndex = 12;
+            this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
             // textBox4
             // 
@@ -267,6 +271,8 @@
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(126, 20);
             this.textBox4.TabIndex = 11;
+            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
+            this.textBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox4_KeyPress);
             // 
             // textBox3
             // 
@@ -274,6 +280,7 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(126, 20);
             this.textBox3.TabIndex = 10;
+            this.textBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox3_KeyPress);
             // 
             // textBox2
             // 
@@ -281,6 +288,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(126, 20);
             this.textBox2.TabIndex = 9;
+            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
             // 
             // textBox1
             // 
@@ -288,6 +296,8 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(126, 20);
             this.textBox1.TabIndex = 8;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // label8
             // 
@@ -404,6 +414,34 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Personel İşlemleri";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // maskedTextBox4
+            // 
+            this.maskedTextBox4.Location = new System.Drawing.Point(443, 211);
+            this.maskedTextBox4.Name = "maskedTextBox4";
+            this.maskedTextBox4.Size = new System.Drawing.Size(100, 20);
+            this.maskedTextBox4.TabIndex = 30;
+            // 
+            // maskedTextBox3
+            // 
+            this.maskedTextBox3.Location = new System.Drawing.Point(106, 211);
+            this.maskedTextBox3.Name = "maskedTextBox3";
+            this.maskedTextBox3.Size = new System.Drawing.Size(180, 20);
+            this.maskedTextBox3.TabIndex = 29;
+            // 
+            // maskedTextBox2
+            // 
+            this.maskedTextBox2.Location = new System.Drawing.Point(106, 181);
+            this.maskedTextBox2.Name = "maskedTextBox2";
+            this.maskedTextBox2.Size = new System.Drawing.Size(180, 20);
+            this.maskedTextBox2.TabIndex = 28;
+            // 
+            // maskedTextBox1
+            // 
+            this.maskedTextBox1.Location = new System.Drawing.Point(106, 147);
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(100, 20);
+            this.maskedTextBox1.TabIndex = 27;
             // 
             // dataGridView2
             // 
@@ -665,33 +703,14 @@
             this.ımageList1.ImageSize = new System.Drawing.Size(16, 16);
             this.ımageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
-            // maskedTextBox1
+            // label22
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(106, 147);
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBox1.TabIndex = 27;
-            // 
-            // maskedTextBox2
-            // 
-            this.maskedTextBox2.Location = new System.Drawing.Point(106, 181);
-            this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.Size = new System.Drawing.Size(180, 20);
-            this.maskedTextBox2.TabIndex = 28;
-            // 
-            // maskedTextBox3
-            // 
-            this.maskedTextBox3.Location = new System.Drawing.Point(106, 211);
-            this.maskedTextBox3.Name = "maskedTextBox3";
-            this.maskedTextBox3.Size = new System.Drawing.Size(180, 20);
-            this.maskedTextBox3.TabIndex = 29;
-            // 
-            // maskedTextBox4
-            // 
-            this.maskedTextBox4.Location = new System.Drawing.Point(443, 211);
-            this.maskedTextBox4.Name = "maskedTextBox4";
-            this.maskedTextBox4.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBox4.TabIndex = 30;
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(373, 234);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(41, 13);
+            this.label22.TabIndex = 24;
+            this.label22.Text = "label22";
             // 
             // Form2
             // 
@@ -787,5 +806,6 @@
         private System.Windows.Forms.MaskedTextBox maskedTextBox3;
         private System.Windows.Forms.MaskedTextBox maskedTextBox2;
         private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.Label label22;
     }
 }
