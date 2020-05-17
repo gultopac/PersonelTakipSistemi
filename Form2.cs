@@ -124,7 +124,7 @@ namespace PersonelTakipSistemi
             int gün = int.Parse(zaman.ToString("dd"));
 
             dateTimePicker1.MinDate = new DateTime(1960, 1, 1);//50 yaşından faazla çalışan olmasın
-            dateTimePicker1.MaxDate = new DateTime(yil - 18,ay,gün);//18 yaşından küçükler çalışamasın
+            dateTimePicker1.MaxDate = new DateTime(yil - 18, ay, gün);//18 yaşından küçükler çalışamasın
             dateTimePicker1.Format = DateTimePickerFormat.Short;
 
             radioButton3.Checked = true;
@@ -152,7 +152,8 @@ namespace PersonelTakipSistemi
 
         private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (char.IsLetter(e.KeyChar) == true || char.IsControl(e.KeyChar) == true || char.IsSeparator(e.KeyChar) == true){
+            if (char.IsLetter(e.KeyChar) == true || char.IsControl(e.KeyChar) == true || char.IsSeparator(e.KeyChar) == true)
+            {
                 //e.keychar tuş bilgisi alma
                 //ısletter=harf demek oluyor 
                 //ıscontrol=back space e basılmışsa
@@ -160,14 +161,14 @@ namespace PersonelTakipSistemi
                 e.Handled = false;//tuşlar aktif olsun
             }
             else
-            e.Handled = true;
+                e.Handled = true;
         }
 
         private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (char.IsLetter(e.KeyChar) == true || char.IsControl(e.KeyChar) == true || char.IsSeparator(e.KeyChar) == true)
             {
-            e.Handled = false;
+                e.Handled = false;
 
             }
             else
@@ -230,16 +231,16 @@ namespace PersonelTakipSistemi
             //bir küçük harf 10 puan 2 ve üzeri 20 puan
             //şirefnin uzunluğu - küçük harf olmayan hali replace yer değiştir//küçük harf olanları siliyoruz bir nevi 
             int az_karakter_sayisi = sifre.Length - Regex.Replace(sifre, "[a-z]", "").Length;//regexreplace şifredeki küçük karakterleri çıkarıp uzunluğunu verir
-            kucuk_harf_skoru = Math.Min(2, az_karakter_sayisi)*10;//2 mi daha yoksa küçük harf sayısı mı küçük olanı 10 la çarptık
+            kucuk_harf_skoru = Math.Min(2, az_karakter_sayisi) * 10;//2 mi daha yoksa küçük harf sayısı mı küçük olanı 10 la çarptık
 
             int AZ_karakter_sayisi = sifre.Length - Regex.Replace(sifre, "[A-Z]", "").Length;
-            buyuk_harf_skoru = Math.Min(2, AZ_karakter_sayisi)*10;
+            buyuk_harf_skoru = Math.Min(2, AZ_karakter_sayisi) * 10;
 
             int rakam_sayisi = sifre.Length - Regex.Replace(sifre, "[0-9]", "").Length;
-            rakam_skoru = Math.Min(2,rakam_sayisi)*10;
+            rakam_skoru = Math.Min(2, rakam_sayisi) * 10;
 
             int sembol_sayisi = sifre.Length - az_karakter_sayisi - AZ_karakter_sayisi - rakam_sayisi;
-            sembol_skoru = Math.Min(2, sembol_sayisi)*10;
+            sembol_skoru = Math.Min(2, sembol_sayisi) * 10;
 
             parola_skor = sembol_skoru + kucuk_harf_skoru + buyuk_harf_skoru + rakam_skoru;
             //100lük sistemde tamamlamak için 
@@ -253,10 +254,11 @@ namespace PersonelTakipSistemi
                 parola_skor += 20;
             }
 
-            if (kucuk_harf_skoru==0 || buyuk_harf_skoru==0 || rakam_skoru==0 || sembol_skoru==0) {
+            if (kucuk_harf_skoru == 0 || buyuk_harf_skoru == 0 || rakam_skoru == 0 || sembol_skoru == 0)
+            {
                 label22.Text = "Büyük harf,Küçük harf,Rakam ve Sembol Kullanmalısın !";
             }
-            if (kucuk_harf_skoru!= 0 && buyuk_harf_skoru != 0 && rakam_skoru != 0 && sembol_skoru != 0)
+            if (kucuk_harf_skoru != 0 && buyuk_harf_skoru != 0 && rakam_skoru != 0 && sembol_skoru != 0)
             {
                 label22.Text = "";
             }
@@ -282,6 +284,128 @@ namespace PersonelTakipSistemi
             else
                 errorProvider1.Clear();
         }
+        private void topPage1_temizle()
+        {
+            textBox1.Clear();
+            textBox2.Clear();
+            textBox3.Clear();
+            textBox4.Clear();
+            textBox5.Clear();
+            textBox6.Clear();
+        }
+        private void topPage2_temizle()
+        {
+
+            pictureBox2.Image = null;
+            maskedTextBox1.Clear();
+            maskedTextBox2.Clear();
+            maskedTextBox3.Clear();
+            maskedTextBox4.Clear();
+            comboBox1.SelectedIndex = -1;
+            comboBox2.SelectedIndex = -1;
+            comboBox3.SelectedIndex = -1;//seçiili olan indisi boşalt
+
+        }
+
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string yetki = "";
+            bool kayitkontrol = false;//daha önceden kayıt var mı kontrol edicez,şuan olmadığını farz ediyoruz
+
+            baglantim.Open();
+            OleDbCommand selectsorgu = new OleDbCommand("select * from kullanicilarim where TcKimlikNo='" + textBox1.Text + "'", baglantim);
+            OleDbDataReader kayitokuma = selectsorgu.ExecuteReader();//select dorgusu sonucunu readera aktardık
+
+            while (kayitokuma.Read())//herhangi bir kayıt varsa
+            {
+                kayitkontrol = true;
+                break;
+            }
+            baglantim.Close();
+
+            if (kayitkontrol == false)
+            {
+                //tc kimlik no kontrolü
+                if (textBox1.Text.Length < 11 || textBox1.Text == "")
+                {
+                    label1.ForeColor = Color.Red;
+                }
+                else
+                    label1.ForeColor = Color.Black;
+                //ad veri kontrolü
+                if (textBox2.Text.Length < 2 || textBox2.Text == "")
+                {
+                    label2.ForeColor = Color.Red;
+                }
+                else
+                    label2.ForeColor = Color.Black;
+                //soyad veri kontrolü
+                if (textBox3.Text.Length < 2 || textBox3.Text == "")
+                {
+                    label3.ForeColor = Color.Red;
+                }
+                else
+                    label3.ForeColor = Color.Black;
+                //kullanici adı kontrol
+                if (textBox4.Text.Length != 8 || textBox4.Text == "")
+                {
+                    label5.ForeColor = Color.Red;
+                }
+                else
+                    label5.ForeColor = Color.Black;
+                //parola veri kontrol
+                if (parola_skor < 70 || textBox5.Text == "")
+                {
+                    label6.ForeColor = Color.Red;
+                }
+                else
+                    label6.ForeColor = Color.Black;
+                //parola tekrar veri konstrolü
+                if (textBox5.Text != textBox6.Text || textBox6.Text == "")
+                {
+                    label7.ForeColor = Color.Red;
+                }
+                else
+                    label7.ForeColor = Color.Black;
+
+                if (textBox1.Text.Length == 11 && textBox1.Text != ""
+                    && textBox2.Text != "" && textBox2.Text.Length > 1
+                    && textBox3.Text != "" && textBox3.Text.Length > 1
+                    && textBox4.Text != "" && textBox5.Text != "" &&
+                    textBox5.Text != "" &&
+                    textBox5.Text == textBox6.Text &&
+                    parola_skor >= 70){
+                    if (radioButton1.Checked == true)
+                        yetki = "Yönetici";
+                    else if (radioButton2.Checked == true)
+                        yetki = "Kullanici";
+                    try
+                    {
+                        baglantim.Open();
+                        OleDbCommand eklekomut = new OleDbCommand("insert into kullanicilarim values('" + textBox1.Text + "','" + textBox2.Text + "','" + textBox3.Text + "','" + yetki + "','" + textBox4.Text + "','" + textBox5.Text + "')", baglantim);
+                        eklekomut.ExecuteNonQuery();//ekle komutuun sorgu sonucunu tabloa işle
+                        baglantim.Close();
+                        MessageBox.Show("Yeni kullanıcı eklendi", "Personel Takip Programı", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);// içerik,başlık,buu-lunacak buttonlar,bilgilendirme iconu demek
+                        topPage1_temizle();
+
+                    }
+                    catch (Exception hatamsj)
+                    {
+                        MessageBox.Show(hatamsj.Message);
+                        baglantim.Close();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Yazı rengi kısmızı olan yerleri tekrar gözden geçiriniz", "Personel Takip Programı", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+             }
+            else
+            {
+                MessageBox.Show("Tc Kimlik no daha önceden kayıtlıdır.", "Personel Takip Programı", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
-    }
+}
 
