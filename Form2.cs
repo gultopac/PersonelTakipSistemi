@@ -406,6 +406,41 @@ namespace PersonelTakipSistemi
                 MessageBox.Show("Tc Kimlik no daha önceden kayıtlıdır.", "Personel Takip Programı", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            bool kayit_arama_durumu = false;
+            if (textBox1.Text.Length == 11)
+            {
+                baglantim.Open();
+                OleDbCommand selectsorgusu = new OleDbCommand("select * from kullanicilarim where TcKimlikNo='" + textBox1.Text + "'", baglantim);
+                OleDbDataReader kayitokuma = selectsorgusu.ExecuteReader();
+                while (kayitokuma.Read())
+                {
+                    kayit_arama_durumu = true;
+                    textBox2.Text = kayitokuma.GetValue(1).ToString();//ad bilgisini vt den aldık stringe dnüştürmemiz gerekiyor
+                    textBox3.Text = kayitokuma.GetValue(2).ToString();
+                    if (kayitokuma.GetValue(3).ToString() == "Yönetici")
+                        radioButton1.Checked = true;
+                    else
+                        radioButton2.Checked = true;
+                    textBox4.Text = kayitokuma.GetValue(4).ToString();
+                    textBox5.Text = kayitokuma.GetValue(5).ToString();
+                    textBox6.Text = kayitokuma.GetValue(5).ToString();
+                    break;
+                }
+                if (kayit_arama_durumu = false) 
+                    MessageBox.Show("Aranan kayıt bulunamadı", "Personel Takip Programı", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+             
+                baglantim.Close();
+            }
+            else
+            {
+                MessageBox.Show("Lütfen 11 Haneli bir TCkimlik no giriniz", "Personel Takip Programı", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+           
+        }
     }
 }
 
