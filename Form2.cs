@@ -441,6 +441,129 @@ namespace PersonelTakipSistemi
             }
            
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+                string yetki = "";
+                
+                
+                    //tc kimlik no kontrolü
+                    if (textBox1.Text.Length < 11 || textBox1.Text == "")
+                    {
+                        label1.ForeColor = Color.Red;
+                    }
+                    else
+                        label1.ForeColor = Color.Black;
+                    //ad veri kontrolü
+                    if (textBox2.Text.Length < 2 || textBox2.Text == "")
+                    {
+                        label2.ForeColor = Color.Red;
+                    }
+                    else
+                        label2.ForeColor = Color.Black;
+                    //soyad veri kontrolü
+                    if (textBox3.Text.Length < 2 || textBox3.Text == "")
+                    {
+                        label3.ForeColor = Color.Red;
+                    }
+                    else
+                        label3.ForeColor = Color.Black;
+                    //kullanici adı kontrol
+                    if (textBox4.Text.Length != 8 || textBox4.Text == "")
+                    {
+                        label5.ForeColor = Color.Red;
+                    }
+                    else
+                        label5.ForeColor = Color.Black;
+                    //parola veri kontrol
+                    if (parola_skor < 70 || textBox5.Text == "")
+                    {
+                        label6.ForeColor = Color.Red;
+                    }
+                    else
+                        label6.ForeColor = Color.Black;
+                    //parola tekrar veri konstrolü
+                    if (textBox5.Text != textBox6.Text || textBox6.Text == "")
+                    {
+                        label7.ForeColor = Color.Red;
+                    }
+                    else
+                        label7.ForeColor = Color.Black;
+
+                    if (textBox1.Text.Length == 11 && textBox1.Text != ""
+                        && textBox2.Text != "" && textBox2.Text.Length > 1
+                        && textBox3.Text != "" && textBox3.Text.Length > 1
+                        && textBox4.Text != "" && textBox5.Text != "" &&
+                        textBox5.Text != "" &&
+                        textBox5.Text == textBox6.Text &&
+                        parola_skor >= 70)
+                    {
+                        if (radioButton1.Checked == true)
+                            yetki = "Yönetici";
+                        else if (radioButton2.Checked == true)
+                            yetki = "Kullanici";
+                        try
+                        {
+                            baglantim.Open();
+                    OleDbCommand guncellekomutu = new OleDbCommand("update kullanicilarim set  Adi='" + textBox2.Text + "', Soyadi='" + textBox3.Text + "' ,Yetki='" + yetki + "' ,KullaniciAdi='" + textBox4.Text + "' ,Parola='"+textBox5.Text+ "' where TcKimlikNo='"+textBox1.Text+"'", baglantim);
+                            guncellekomutu.ExecuteNonQuery();
+                            baglantim.Close();
+                            MessageBox.Show("Kullanici bilgileri güncellendi", "Personel Takip Programı", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);// içerik,başlık,buu-lunacak buttonlar,bilgilendirme iconu demek
+                        kullanicilar_goster();
+
+                        }
+
+                        catch (Exception hatamsj)
+                        {
+                            MessageBox.Show(hatamsj.Message);
+                            baglantim.Close();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Yazı rengi kısmızı olan yerleri tekrar gözden geçiriniz", "Personel Takip Programı", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text.Length == 11)
+            {
+                bool kayit_arama_durumu = false;
+                baglantim.Open();
+                OleDbCommand selectsorgu = new OleDbCommand("select * from kullanicilarim where TcKimlikNo='" + textBox1.Text + "'", baglantim);
+                OleDbDataReader kayitokuma = selectsorgu.ExecuteReader();
+
+                while (kayitokuma.Read())
+                {
+                    kayit_arama_durumu = true;
+                    OleDbCommand deletesorgu = new OleDbCommand("delete from kullanicilarim where TcKimlikNo='" + textBox1.Text + "'", baglantim);
+                    deletesorgu.ExecuteNonQuery();
+                    MessageBox.Show("Kullanıcı kaydı silindi", "Personel Takip Programı", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    baglantim.Close();
+                    kullanicilar_goster();
+                    topPage1_temizle();
+                    break;
+                }
+                if (kayit_arama_durumu == false)
+                {
+                    MessageBox.Show("Silinecek kayıt bulunamadı", "Personel Takip Programı", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    baglantim.Close();
+                    topPage1_temizle();
+                }
+                else
+                {
+                    MessageBox.Show("Lütfen 11 karakterden oluşan bir TC kimlik no giriniz", "Personel Takip Programı", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            topPage1_temizle();
+
+        }
     }
 }
 
